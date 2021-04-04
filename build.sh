@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export GO111MODULE=off
+export GOARCH=arm
 
 _BASE=https://github.com/u-root
 _UROOT_REF=master
