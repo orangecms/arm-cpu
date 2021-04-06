@@ -9,7 +9,7 @@ Basic Minicom usage: `minicom -D /dev/ttyUSB0`
 Remember to unset flow control:
 Press Ctrl + A, then O, select "Serial port setup", press F, ESC, ESC.
 
-To log to a file, press Ctrl + L and enter the desired name.
+To log to a file, press Ctrl + A, then L and enter the desired name.
 
 ## U-Boot Shell
 
