@@ -18,4 +18,5 @@ u-root -o $_DIR.cpio \
 sudo rm -rf $_DIR
 mkdir -p $_DIR
 (cd $_DIR && sudo cpio -i < $_DIR.cpio)
+rm $_NAME.sfs
 mksquashfs $_DIR $_NAME.sfs -comp xz
