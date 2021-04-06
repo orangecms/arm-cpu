@@ -7,7 +7,7 @@ export GOARCH=arm
 _NAME=u-root-victure
 _DIR=/tmp/$_NAME
 
-u-root -o $_CPIO \
+u-root -o $_DIR.cpio \
   -files cpu_rsa.pub:key.pub \
   -files usr/modules/8188fu.ko:lib/modules/8188fu.ko \
   -files usr/modules/otg-hs.ko:lib/modules/otg-hs.ko \
@@ -17,5 +17,5 @@ u-root -o $_CPIO \
 
 sudo rm -rf $_DIR
 mkdir -p $_DIR
-(cd $_DIR && sudo cpio -i < $_NAME.cpio)
+(cd $_DIR && sudo cpio -i < $_DIR.cpio)
 mksquashfs $_DIR $_NAME.sfs -comp xz
