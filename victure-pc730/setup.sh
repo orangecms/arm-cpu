@@ -19,6 +19,7 @@ insmod /usr/modules/otg-hs.ko
 
 # Wi-Fi
 mkdir -p /var/run
+sleep 5
 hostapd /etc/jffs2/hostapd.conf -B
 ifconfig wlan1 10.1.8.1
 udhcpd /etc/udhcpd.conf
@@ -27,9 +28,14 @@ udhcpd /etc/udhcpd.conf
 
 # u-root
 # cd /tmp/ramdisk && tar -xf /mnt/root-arm-cpud.tar
-# ./root-arm-cpud/bbin/cpud -init
+# ./root-arm-cpud/bbin/cpud -d -init
 mkdir /tmp/rootfs
-mount -t squashfs /mnt/root-arm-cpud.sfs /mnt/rootfs
+#mount -t squashfs /mnt/root-arm-cpud.sfs /tmp/rootfs
+mount -t squashfs /mnt/u-root-victure.sfs /tmp/rootfs
 cp /mnt/cpu_rsa.pub /tmp/key.pub
-cd /tmp/
-./rootfs/bbin/cpud -init -d
+mount -o bind  /dev /tmp/rootfs/dev
+mount -o bind /proc /tmp/rootfs/proc
+mount -o bind  /sys /tmp/rootfs/sys
+#cd /tmp/ && ./rootfs/bbin/cpud -d -init -remote
+chroot /tmp/rootfs/ /init
+# cpud -d -init -remote
