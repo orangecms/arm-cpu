@@ -37,6 +37,30 @@ reset
 
 Now you will boot into Linux in single user mode, with no init interfering. :-)
 
+### Booting From MMC (SD Card)
+
+The `fatload` command loads a file from a FAT filesystem into memory.
+You will need to know the memory address where to load the file, which is
+specific to the SoC. Check for `loadaddr` and `bootargs` in `printenv`.
+
+This example addresses the first MMC device (`mmc 0:`), picks the first
+partition (`1`), and loads to memory address `81b08000` the file named `uImage`
+(relative to `/`, the root on the partition):
+
+```
+fatload mmc 0:1 81b08000 uImage
+```
+
+Then temporarily switch to single user mode by adding `single` to `bootargs`:
+```
+setenv bootargs console=ttySAK0,115200n8 root=/dev/mmcblk0p2 rootfstype=squashfs init=/init mem=64M memsize=64M single
+```
+
+And boot from memory:
+```
+bootm
+```
+
 ## Backup and Extraction
 
 ### From U-Boot
