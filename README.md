@@ -121,3 +121,65 @@ jefferson -d etc mtdblock5
 ```
 
 Now you can copy over all the pieces to stitch together a new initramfs.
+
+## Building and Running u-root
+
+**TODO**
+
+## Executing Over `cpu`
+
+### On the target
+
+This requires the daemon running: `cpud -d -init`
+
+Below output is from after invoking `cpu` from the host you come from.
+
+```
+PWD=/tmp ./cpu -timeout9p 1000ms -bin 'cpud -d' victure hello
+1970/01/01 00:18:29
+CPUD:Args [cpud -d -remote -bin cpud -d -port9p 41889 hello] pid 457 *runasinit false *remote true
+1970/01/01 00:18:29
+CPUD:Running as remote
+1970/01/01 00:18:29 -- mkdirall
+1970/01/01 00:18:29 mkdir /home: read-only file system
+1970/01/01 00:18:29 CPUD:namespace is "/lib:/lib64:/usr:/bin:/etc:/home"
+1970/01/01 00:18:29 -- connect
+1970/01/01 00:18:29 CPUD:Dial 127.0.0.1:41889
+1970/01/01 00:18:29 CPUD:Connected: write nonce 9d6adc883876e3719941ba67e49eb49e
+1970/01/01 00:18:29 CPUD:Wrote the nonce
+1970/01/01 00:18:29 CPUD:fd is 11
+1970/01/01 00:18:29 CPUD: mount 127.0.0.1 on /tmp/cpu 9p 0x6 version=9p2000.L,trans=fd,rfdno=11,wfdno=11,uname=dan,debug=0,msize=1048576
+1970/01/01 00:18:29 9p mount ERROR :( no such device
+1970/01/01 00:18:29 CPUD(as remote):9p mount ERROR no such device
+2021/04/07 01:37:50 SSH error Process exited with status 1
+```
+
+### On the host you come from
+
+`cpu -timeout9p 2000ms -bin 'cpud -d' goke hello`
+
+Yields:
+
+```
+1970/01/01 00:22:16
+CPUD:Args [cpud -d -remote -bin cpud -d -port9p 51723 hello] pid 238 *runasinit false *remote true
+1970/01/01 00:22:16
+CPUD:Running as remote
+1970/01/01 00:22:16 -- mkdirall
+1970/01/01 00:22:16 mkdir /home: read-only file system
+1970/01/01 00:22:16 CPUD:namespace is "/tmp/cpu/"
+1970/01/01 00:22:16 -- connect
+1970/01/01 00:22:16 CPUD:Dial 127.0.0.1:51723
+1970/01/01 00:22:16 CPUD:Connected: write nonce effe5b0d71f86aa75036331883f304ab
+1970/01/01 00:22:16 CPUD:Wrote the nonce
+1970/01/01 00:22:16 CPUD:fd is 11
+1970/01/01 00:22:16 CPUD: mount 127.0.0.1 on /tmp/cpu 9p 0x6 version=9p2000.L,trans=fd,rfdno=11,wfdno=11,uname=dan,debug=0,msize=1048576
+1970/01/01 00:22:16 CPUD: mount done
+1970/01/01 00:22:16 CPUD: mount /tmp/cpu/tmp/cpu over /tmp/cpu/
+1970/01/01 00:22:16 CPUD:Mounted /tmp/cpu/tmp/cpu on /tmp/cpu/
+1970/01/01 00:22:16 CPUD: bind mounts done
+1970/01/01 00:22:16 CPUD:dropPrives: uid is 0
+1970/01/01 00:22:16 CPUD:dropPrivs: not dropping privs
+1970/01/01 00:22:16 CPUD:runRemote: command is "hello"
+hello
+```
