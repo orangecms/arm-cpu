@@ -1,4 +1,40 @@
-# Modifying Gadget Firmware
+# arm-cpu
+
+This repository deals with gadgets and dev boards based on [Arm and Linux](
+https://www.kernel.org/doc/html/latest/arm/index.html). There are also gadgets
+based on MIPS and probably soon RISC-V, to which the concepts can be extended.
+
+## Introduction
+
+Modifying gadget firmware is a simple means of obtaining a reasonably priced
+board for developing on Arm based platforms, independent from more mainstream
+products such as Raspberry Pi.
+The [idea](https://github.com/orangecms/repurposing-gadgets) is simple: obtain a
+device such as an IP camera, an NVR (network video recorder), a wireless storage
+device, or possibly enhanced household gear, and turn it into something else.
+
+However, this is a bit of a tedious process: copying images over network, via
+USB sticks or SD cards, loading them again and again, setting up NFS, DHCP, TFTP
+and other services as well as rebuilding takes time. To boost the process, we
+leverage two convenient tools:
+
+- [`centre`](https://github.com/Harvey-OS/go/tree/main/cmd/centre), a combined
+  DHCP+TFTP+HTTP serving utility,
+- [`cpu`](https://github.com/u-root/cpu/), a 9p based tool to run code on and
+  access resources from other machines
+
+These only require a very basic Linux system to run:
+
+- a Linux kernel for the respective SoC with necessary drivers and support for
+  networking and the 9p filesystem
+- a root filesystem with `cpud` in it
+
+The kernel can be a bit of a challenge. Not all SoC vendors upstream patches to
+Linux, but distribute PDKs and/or SDKs (product/software development kits) to
+their customers, which are typically OEMs. However, some do publish the sources
+again, often with prebuilt modules only available as blobs, so we are stuck with
+a specific kernel version unless we want to spend time on figuring things out.
+That is out of the scope of this project and we focus on the userland bits. :-)
 
 ## Gaining Access
 
