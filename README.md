@@ -33,7 +33,8 @@ The kernel can be a bit of a challenge. Not all SoC vendors upstream patches to
 Linux, but distribute PDKs and/or SDKs (product/software development kits) to
 their customers, which are typically OEMs. However, some do publish the sources
 again, often with prebuilt modules only available as blobs, so we are stuck with
-a specific kernel version unless we want to spend time on figuring things out.
+a specific kernel version unless we want to spend time on [figuring things out](
+https://github.com/pfalcon/awesome-linux-android-hacking#can-kernel-modules-built-for-one-version-be-used-with-another-kernel-version).
 That is out of the scope of this project and we focus on the userland bits. :-)
 
 For more details on `cpu`, have a look at the [chapter of the LinuxBoot book](
