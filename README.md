@@ -36,6 +36,12 @@ again, often with prebuilt modules only available as blobs, so we are stuck with
 a specific kernel version unless we want to spend time on figuring things out.
 That is out of the scope of this project and we focus on the userland bits. :-)
 
+For more details on `cpu`, have a look at the [chapter of the LinuxBoot book](
+https://github.com/linuxboot/book/tree/master/cpu) explaining it. In fact, this
+project can be seen as an implementation of [LinuxBoot](https://linuxboot.org),
+since it involves booting a system involving [Linux](https://kernel.org).
+You can `chroot` into another rootfs or `kexec` another kernel / image.
+
 ## Gaining Access
 
 Connect to the UART, e.g., using dupont wires and a USB serial adapter, and run
