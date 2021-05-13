@@ -14,9 +14,10 @@ device such as an IP camera, an NVR (network video recorder), a wireless storage
 device, or possibly enhanced household gear, and turn it into something else.
 
 However, this is a bit of a tedious process: copying images over network, via
-USB sticks or SD cards, loading them again and again, setting up NFS, DHCP, TFTP
-and other services as well as rebuilding takes time. To boost the process, we
-leverage two convenient tools:
+USB sticks or SD cards, loading them again and again, [setting up NFS](
+https://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems), DHCP, TFTP and other
+services as well as rebuilding takes time. To boost the process, we leverage two
+convenient tools:
 
 - [`centre`](https://github.com/Harvey-OS/go/tree/main/cmd/centre), a combined
   DHCP+TFTP+HTTP serving utility,
