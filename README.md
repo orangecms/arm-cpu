@@ -1,13 +1,13 @@
 # arm-cpu
 
-This repository deals with gadgets and dev boards based on [Arm and Linux](
+This repository deals with gadgets and dev boards based on [ARM and Linux](
 https://www.kernel.org/doc/html/latest/arm/index.html). There are also gadgets
 based on MIPS and probably soon RISC-V, to which the concepts can be extended.
 
 ## Introduction
 
 Modifying gadget firmware is a simple means of obtaining a reasonably priced
-board for developing on Arm based platforms, independent from more mainstream
+board for developing on ARM based platforms, independent from more mainstream
 products such as Raspberry Pi.
 The [idea](https://github.com/orangecms/repurposing-gadgets) is simple: obtain a
 device such as an IP camera, an NVR (network video recorder), a wireless storage
