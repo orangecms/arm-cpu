@@ -8,7 +8,7 @@ _NAME=u-root-victure
 _DIR=/tmp/$_NAME
 
 u-root -o $_DIR.cpio \
-  -files cpu_rsa.pub:key.pub \
+  -files ~/.ssh/cpu_rsa.pub:key.pub \
   -files usr/modules/8188fu.ko:lib/modules/8188fu.ko \
   -files usr/modules/otg-hs.ko:lib/modules/otg-hs.ko \
   -files usr/modules/sdio_wifi.ko:lib/modules/sdio_wifi.ko \
