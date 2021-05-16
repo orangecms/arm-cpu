@@ -1,0 +1,26 @@
+commit ca021773bb6e89aca897da734cdc9cbf9babe601
+Author: Daniel Maslowski <info@orangecms.org>
+Date:   Sun May 16 20:33:13 2021 +0200
+
+    hi3536dv100: set up basic framebuffer console
+
+diff --git a/arch/arm/boot/dts/hi3536dv100.dtsi b/arch/arm/boot/dts/hi3536dv100.dtsi
+index 968d91db..0c293ee5 100644
+--- a/arch/arm/boot/dts/hi3536dv100.dtsi
++++ b/arch/arm/boot/dts/hi3536dv100.dtsi
+@@ -31,6 +31,15 @@
+ 		gpio5 = &gpio_chip5;
+ 	};
+ 
++	framebuffer {
++		compatible = "simple-framebuffer";
++		reg = <0x8dd00000 (800 * 600 * 2)>;
++		width = <800>;
++		height = <600>;
++		stride = <(832)>;
++		format = "r5g6b5";
++	};
++
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
