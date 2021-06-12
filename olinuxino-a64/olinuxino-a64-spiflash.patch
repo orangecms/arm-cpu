@@ -1,0 +1,72 @@
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 09606826..b7eabb11 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -642,6 +642,7 @@ dtb-$(CONFIG_MACH_SUN50I) += \
+ 	sun50i-a64-oceanic-5205-5inmfd.dtb \
+ 	sun50i-a64-olinuxino.dtb \
+ 	sun50i-a64-olinuxino-emmc.dtb \
++	sun50i-a64-olinuxino-spiflash.dtb \
+ 	sun50i-a64-orangepi-win.dtb \
+ 	sun50i-a64-pine64-lts.dtb \
+ 	sun50i-a64-pine64-plus.dtb \
+diff --git a/arch/arm/dts/sun50i-a64-olinuxino-spiflash.dts b/arch/arm/dts/sun50i-a64-olinuxino-spiflash.dts
+new file mode 100644
+index 00000000..0ea9a084
+--- /dev/null
++++ b/arch/arm/dts/sun50i-a64-olinuxino-spiflash.dts
+@@ -0,0 +1,30 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++// Copyright (C) 2018 Martin Ayotte <martinayotte@gmail.com>
++// Copyright (C) 2019 Sunil Mohan Adapa <sunil@medhas.org>
++
++#include "sun50i-a64-olinuxino.dts"
++
++/ {
++	model = "Olimex A64-OLinuXino-1Gs16M";
++	compatible = "olimex,a64-olinuxino-spiflash", "allwinner,sun50i-a64";
++};
++
++&spi0 {
++	pinctrl-0 = <&spi0_pins>;
++ 	pinctrl-names = "default";
++	status = "okay";
++
++	spidev@0 {
++		compatible = "spidev";
++		reg = <0x0>;
++		spi-max-frequency = <0x2faf080>;
++	};
++
++	flash@0 {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		compatible = "winbond,w25q128", "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <4000000>;
++	};
++};
+diff --git a/arch/arm/dts/sun50i-a64-olinuxino.dts b/arch/arm/dts/sun50i-a64-olinuxino.dts
+index f3f8e177..ecbd9b6b 100644
+--- a/arch/arm/dts/sun50i-a64-olinuxino.dts
++++ b/arch/arm/dts/sun50i-a64-olinuxino.dts
+@@ -15,6 +15,7 @@
+ 	aliases {
+ 		ethernet0 = &emac;
+ 		serial0 = &uart0;
++		spi0 = &spi0;
+ 	};
+ 
+ 	chosen {
+diff --git a/arch/arm/dts/sun50i-a64.dtsi b/arch/arm/dts/sun50i-a64.dtsi
+index 57786fc1..8b5f26a0 100644
+--- a/arch/arm/dts/sun50i-a64.dtsi
++++ b/arch/arm/dts/sun50i-a64.dtsi
+@@ -752,6 +752,7 @@
+ 				function = "spdif";
+ 			};
+ 
++			/* PC1 is shared MMC2 (eMMC) */
+ 			spi0_pins: spi0-pins {
+ 				pins = "PC0", "PC1", "PC2", "PC3";
+ 				function = "spi0";
