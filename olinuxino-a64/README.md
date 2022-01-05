@@ -4,6 +4,26 @@ This board is based on the Allwinner A64 SoC.
 
 There is a variant that comes with a SPI flash.
 
+## Resources
+
+### Vendor
+
+https://github.com/OLIMEX/OLINUXINO/tree/master/SOFTWARE/A64
+
+### Building
+
+https://wiki.amarulasolutions.com/bsp/sunxi/a64/a64-oli.html
+
+https://gist.github.com/apritzel/68941c29c77955f1daa45b50d36c5425
+
+### U-Boot
+
+https://source.denx.de/u-boot/u-boot/-/blob/master/board/sunxi/README.sunxi64
+
+https://source.denx.de/u-boot/u-boot/-/blob/master/doc/README.falcon
+
+https://github.com/StephanvanSchaik/u-boot/commits/sunxi-spi
+
 ## Flash Mode
 
 As per https://linux-sunxi.org/BROM#A64, hold U-Boot(/FEL) while pressing reset.
