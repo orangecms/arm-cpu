@@ -5,7 +5,7 @@ all: initramfs/initramfs.cpio xzcpio kernel
 initramfs/initramfs.cpio:
 	cd initramfs/u-root && \
 	GOARCH=arm go run . -o ../initramfs.cpio \
-		-files ../../cpu_rsa.pub:key.pub \
+		-files ~/.ssh/cpu_rsa.pub:key.pub \
 		github.com/u-root/u-root/cmds/core/elvish \
 		github.com/u-root/u-root/cmds/core/init \
 		github.com/u-root/u-root/cmds/core/cat \
