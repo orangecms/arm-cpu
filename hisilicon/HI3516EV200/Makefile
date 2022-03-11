@@ -11,7 +11,7 @@ initramfs/initramfs.cpio:
 		github.com/u-root/u-root/cmds/core/cat \
 		github.com/u-root/u-root/cmds/core/dhclient \
 		github.com/u-root/u-root/cmds/core/ls \
-		../cpu/cmds/cpu
+		../cpu/cmds/cpud
 
 .PHONY: clean xzcpio
 
