@@ -13,10 +13,13 @@ initramfs/initramfs.cpio:
 		github.com/u-root/u-root/cmds/core/ls \
 		../cpu/cmds/cpud
 
-.PHONY: clean xzcpio
+.PHONY: clean kclean xzcpio
 
-clean:
+clean: kclean
 	rm -f initramfs/initramfs.cpio
+
+kclean:
+	rm -f $(_KERNEL)/arch/arm/boot/uImage
 
 xzcpio: initramfs/initramfs.cpio
 	xz --check=crc32 -9 --lzma2=dict=1MiB --stdout initramfs/initramfs.cpio | \
