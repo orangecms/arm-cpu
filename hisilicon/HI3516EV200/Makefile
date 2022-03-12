@@ -6,6 +6,7 @@ initramfs/initramfs.cpio:
 	cd initramfs/u-root && \
 	GOARCH=arm go run . -o ../initramfs.cpio \
 		-files ~/.ssh/cpu_rsa.pub:key.pub \
+		-files ../../init:.config/elvish/rc.elv \
 		github.com/u-root/u-root/cmds/core/elvish \
 		github.com/u-root/u-root/cmds/core/init \
 		github.com/u-root/u-root/cmds/core/cat \

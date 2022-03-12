@@ -1,0 +1,2 @@
+ip link set eth0 up
+ip addr add 192.168.0.222/24 eth0
