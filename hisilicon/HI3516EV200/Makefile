@@ -7,12 +7,7 @@ initramfs/initramfs.cpio:
 	GOARCH=arm go run . -o ../initramfs.cpio \
 		-files ~/.ssh/cpu_rsa.pub:key.pub \
 		-files ../../init:.config/elvish/rc.elv \
-		github.com/u-root/u-root/cmds/core/elvish \
-		github.com/u-root/u-root/cmds/core/init \
-		github.com/u-root/u-root/cmds/core/cat \
-		github.com/u-root/u-root/cmds/core/dhclient \
-		github.com/u-root/u-root/cmds/core/ls \
-		../cpu/cmds/cpud
+		embedded ../cpu/cmds/cpud
 
 .PHONY: clean kclean xzcpio
 
