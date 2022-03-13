@@ -1,0 +1,5 @@
+#!/bin/sh
+
+_REMOTE=192.168.0.222
+
+CPU_NAMESPACE=/home ../../bin/cpu -key ~/.ssh/cpu_rsa -timeout9p 3s $_REMOTE $@
