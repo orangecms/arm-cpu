@@ -51,6 +51,10 @@ ifeq (,$(wildcard ./$(_KERNEL)))
 		patch -p1 < ../../11_fix_yylloc_for_modern_computers.patch
 endif
 
+cpu: fetchuroot
+	mkdir -p ../../bin
+	cd initramfs/cpu && go build -o ../../../../bin/cpu ./cmds/cpu
+
 kernel: $(_KERNEL)
 ifeq (,$(wildcard ./$(_KERNEL)/arch/arm/boot/uImage))
 	cd $(_KERNEL) && \
