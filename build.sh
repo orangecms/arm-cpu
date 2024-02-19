@@ -4,7 +4,7 @@ export GO111MODULE=off
 export GOARCH=arm
 
 _BASE=https://github.com/u-root
-_UROOT_REF=master
+_UROOT_REF=main
 _CPU_REF=main
 
 wget $_BASE/u-root/archive/$_UROOT_REF.tar.gz -O u-root.tar.gz
